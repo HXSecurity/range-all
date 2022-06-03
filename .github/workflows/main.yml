@@ -26,6 +26,7 @@ jobs:
           cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v1 .
           cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v1 .
           cd ../iast/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-v1 .
+          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v1 .
       - name: push
         uses: nick-invision/retry@v2
         with:
@@ -37,4 +38,4 @@ jobs:
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v1
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v1 
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-v1 
-            
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v1-v1 

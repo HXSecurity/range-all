@@ -15,9 +15,15 @@ RUN apt-get install -q -y \
      unzip \
      && apt-get clean
 
-WORKDIR /opt/
-COPY . .
-RUN unzip git.zip && git clone https://github.com/OWASP-Benchmark/BenchmarkUtils.git && cd BenchmarkUtils && mvn install
-RUN cd /opt/ && mvn clean package cargo:install
-ENV PATH /opt:$PATH
+RUN mkdir /owasp
+WORKDIR /owasp
+RUN git clone https://github.com/OWASP-Benchmark/BenchmarkJava && git clone https://github.com/OWASP-Benchmark/BenchmarkUtils.git && cd BenchmarkUtils && mvn install
+WORKDIR /owasp/BenchmarkJava
+RUN mvn clean package cargo:install
+
+RUN useradd -d /home/bench -m -s /bin/bash bench
+RUN echo bench:bench | chpasswd
+
+RUN chown -R bench /owasp/
+ENV PATH /owasp/BenchmarkJava:$PATH
 CMD bash entrypoint.sh ${IASTIP} ${TOKEN} ${ProjectName}

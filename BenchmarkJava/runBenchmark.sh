@@ -5,4 +5,4 @@ case "$1" in
 *)          quiet=""    ;;
 esac
 mvn ${quiet} initialize
-mvn ${quiet} clean package cargo:run -Pdeploywdongtai
+mvn ${quiet} package cargo:run -Pdeploywdongtai

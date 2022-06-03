@@ -5,7 +5,7 @@ ProjectNam=${3}
 curl -X GET $IASTIP'/openapi/api/v1/agent/download?url='$IASTIP'/openapi&language=java' -H 'Authorization: Token '$TOKEN -o agent.jar -k
 nohup bash runRemoteAccessibleBenchmark.sh &
 echo "项目启动中...，请等待3分钟"
-for i in {180..1}
+for i in {300..1}
 do
 sleep 1
 echo shell炸弹爆炸倒计时: $i !!!

@@ -10,6 +10,7 @@ RUN apt-get install -q -y \
      git \
      maven \
      wget \
+     curl \
      iputils-ping \
      && apt-get clean
 

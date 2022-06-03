@@ -15,6 +15,7 @@ RUN apt-get install -q -y \
 
 WORKDIR /opt/
 COPY . .
+RUN git clone https://github.com/OWASP-Benchmark/BenchmarkJava.git && cp -r BenchmarkJava/.git .
 RUN mvn clean package cargo:install
 ENV PATH /opt:$PATH
 CMD bash entrypoint.sh ${IASTIP} ${TOKEN} ${ProjectName}

@@ -30,7 +30,7 @@ jobs:
       - name: push
         uses: nick-invision/retry@v2
         with:
-          timeout_seconds: 300
+          timeout_seconds: 3000
           max_attempts: 10
 
           command: |

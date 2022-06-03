@@ -13,15 +13,8 @@ RUN apt-get install -q -y \
      iputils-ping \
      && apt-get clean
 
-RUN mkdir /owasp
-WORKDIR /owasp
-RUN git clone https://github.com/OWASP-Benchmark/BenchmarkJava
-WORKDIR /owasp/BenchmarkJava
+WORKDIR /opt/
+COPY . .
 RUN mvn clean package cargo:install
-
-RUN useradd -d /home/bench -m -s /bin/bash bench 
-RUN echo bench:bench | chpasswd
-
-RUN chown -R bench /owasp/
-ENV PATH /owasp/BenchmarkJava:$PATH
-
+ENV PATH /opt:$PATH
+CMD bash entrypoint.sh ${IASTIP} ${TOKEN} ${ProjectName}

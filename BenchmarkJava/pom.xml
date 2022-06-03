@@ -252,8 +252,8 @@
                                 <properties>
                                     <cargo.jvmargs>
                                         -Xmx8G
-                                        -javaagent:dongtai-agent.jar
-                                        -Ddongtai.app.name=BenchmarkJava
+                                        -javaagent:agent.jar
+                                        -Ddongtai.app.name=sdafsdafsdafdsafadsfsfd
                                         -Ddongtai.log.level=debug
                                     </cargo.jvmargs>
                                     <cargo.servlet.port>8443</cargo.servlet.port>

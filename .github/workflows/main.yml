@@ -24,6 +24,7 @@ jobs:
         run: |
           cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v1 .
           cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v1 .
+          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v1 .
       - name: push
         uses: nick-invision/retry@v2
         with:
@@ -33,4 +34,5 @@ jobs:
           command: |
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v1
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v1
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v1 
             

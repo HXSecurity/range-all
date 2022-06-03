@@ -4,7 +4,7 @@
 
 openrasp    https://github.com/baidu/openrasp.git
 ```cmd
-docker run -it --rm -e IASTIP="http://IP" -e TOKEN="3d6bb430bc3" -e ProjectNam="openrasp"  8080:8080 registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v1
+docker run -it --rm -e IASTIP="http://IP" -e TOKEN="3d6bb430bc3" -e ProjectName="openrasp" -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v1
 ```
 
 

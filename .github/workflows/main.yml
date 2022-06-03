@@ -30,12 +30,12 @@ jobs:
       - name: push
         uses: nick-invision/retry@v2
         with:
-          timeout_seconds: 3000
+          timeout_seconds: 300
           max_attempts: 10
 
           command: |
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v1
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v1
             docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v1 
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-v1 
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v1-v1 
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v1
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v1

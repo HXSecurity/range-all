@@ -12,6 +12,7 @@ RUN apt-get install -q -y \
      wget \
      curl \
      iputils-ping \
+     unzip \
      && apt-get clean
 
 WORKDIR /opt/

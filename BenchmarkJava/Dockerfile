@@ -19,6 +19,7 @@ RUN mkdir /owasp
 WORKDIR /owasp
 RUN git clone https://github.com/OWASP-Benchmark/BenchmarkJava && git clone https://github.com/OWASP-Benchmark/BenchmarkUtils.git && cd BenchmarkUtils && mvn install
 WORKDIR /owasp/BenchmarkJava
+COPY . .
 RUN mvn clean package cargo:install
 
 RUN useradd -d /home/bench -m -s /bin/bash bench

@@ -28,4 +28,5 @@ else
     echo 靶场爆炸倒计时: $i !!!
 fi
 done
+curl 127.0.0.1:8085/iast6\?name=hello
 tail -f /dev/null

@@ -27,8 +27,19 @@ rm -rf catalina.sh
 mv catalina_old.sh catalina.sh
 chmod 777 catalina.sh
 nohup ./startup.sh &
-echo "项目启动中...请等待1分钟"
-sleep 1m
+echo "项目启动中...，请等待"
+for i in {399..1}
+do
+sleep 1
+
+a=`lsof -i:8080 | wc -l`
+if [ "$a" -gt "0" ];then
+    echo 我胡汉三在倒计时进行到 $i 时提前启动了!!!
+    break
+else
+    echo 靶场爆炸倒计时: $i !!!
+fi
+done
 cd ../../
 HOST="http://"$IP":8080"
 echo "开始触发靶场流量"

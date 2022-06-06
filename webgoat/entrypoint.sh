@@ -15,7 +15,19 @@ HOST="http://"$IP":"$PORT
 curl -H 'Content-type: application/x-www-form-urlencoded'  -X POST -d 'username=usertest&password=123456&matchingPassword=123456&agree=agree' ${HOST}/WebGoat/register.mvc 
 echo "开始触发靶场流量"
 ./webgoat.sh $HOST
-echo "请等待1分钟"
+echo "项目启动中...，请等待"
+for i in {399..1}
+do
+sleep 1
+
+a=`lsof -i:8087 | wc -l`
+if [ "$a" -gt "0" ];then
+    echo 我胡汉三在倒计时进行到 $i 时提前启动了!!!
+    break
+else
+    echo 靶场爆炸倒计时: $i !!!
+fi
+done
 sleep 1m
 echo "开始漏洞检测"
 ./webgoat-check.sh $ProjectNam $IASTIP $TOKEN

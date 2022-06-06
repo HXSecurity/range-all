@@ -5,5 +5,5 @@ ADD https://github.com/WebGoat/WebGoat/releases/download/v8.2.2/webgoat-server-8
 COPY .webgoat-8.2.2  ~/
 COPY . .
 RUN yum -y install yum -y install *epel* \
-    && yum -y install net-tools jq --nogpgcheck && chmod +x ./entrypoint.sh
+    && yum -y install net-tools lsof jq --nogpgcheck && chmod +x ./entrypoint.sh
 CMD bash entrypoint.sh ${IASTIP} ${TOKEN} ${ProjectName}

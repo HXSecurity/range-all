@@ -12,7 +12,7 @@ RUN apt-get install -q -y \
      wget \
      curl \
      iputils-ping \
-     net-tools \
+     net-tools lsof \
      && apt-get clean
 
 RUN mkdir /owasp

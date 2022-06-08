@@ -37,7 +37,7 @@ if [ "$a" -gt "0" ];then
     echo 我胡汉三在倒计时进行到 $i 时提前启动了!!!
     break
 else
-    echo 靶场爆炸倒计时: $i !!!
+    echo 靶场启动倒计时: $i !!!
 fi
 done
 cd ../../

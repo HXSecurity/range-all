@@ -26,7 +26,8 @@ HOST="http://"$IP":"$PORT
 curl -H 'Content-type: application/x-www-form-urlencoded'  -X POST -d 'username=usertest&password=123456&matchingPassword=123456&agree=agree' ${HOST}/WebGoat/register.mvc 
 echo "开始触发靶场流量"
 ./webgoat.sh $HOST
-sleep 1m
-echo "开始漏洞检测"
-./webgoat-check.sh $ProjectNam $IASTIP $TOKEN
+echo "流量触发结束ok!!!"
+#sleep 1m
+#echo "开始漏洞检测"
+#./webgoat-check.sh $ProjectNam $IASTIP $TOKEN
 tail -f /dev/null

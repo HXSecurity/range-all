@@ -44,8 +44,8 @@ cd ../../
 HOST="http://"$IP":8080"
 echo "开始触发靶场流量"
 ./openrasp-vuln-spider.sh $HOST
-echo "请等待1分钟"
-sleep 1m
-echo "开始漏洞检测"
-./openrasp-vuln-check.sh $ProjectNam $IASTIP $TOKEN
+echo "流量触发结束ok!!!"
+#sleep 1m
+#echo "开始漏洞检测"
+#./openrasp-vuln-check.sh $ProjectNam $IASTIP $TOKEN
 tail -f /dev/null

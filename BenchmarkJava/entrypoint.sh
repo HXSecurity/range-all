@@ -3,6 +3,9 @@ IASTIP=${1}
 TOKEN=${2}
 ProjectNam=${3}
 curl -X GET $IASTIP'/openapi/api/v1/agent/download?url='$IASTIP'/openapi&language=java' -H 'Authorization: Token '$TOKEN -o agent.jar -k
+if [ ! -f "agent.jar" ]; then 
+exit 1
+fi 
 nohup bash runRemoteAccessibleBenchmark.sh &
 echo "项目启动中...，请等待"
 for i in {399..1}

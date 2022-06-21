@@ -22,6 +22,9 @@ mysql -uroot -e "INSERT INTO testdb.vuln values (1, 'rocks');"
 tar -xvf tomcat8.tar.gz
 cd tomcat8/bin/
 curl -X GET "$IASTIP/openapi/api/v1/agent/download?url=$IASTIP/openapi&language=java" -H "Authorization: Token $TOKEN" -o agent.jar -k
+if [ ! -f "agent.jar" ]; then 
+exit 1
+fi 
 sed "2c CATALINA_OPTS=\"-javaagent:agent.jar -Ddongtai.log.level=debug -Ddongtai.log=true -Dproject.name=$ProjectNam\"" catalina.sh >catalina_old.sh
 rm -rf catalina.sh
 mv catalina_old.sh catalina.sh

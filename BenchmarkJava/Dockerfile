@@ -20,11 +20,11 @@ WORKDIR /owasp
 RUN git clone https://github.com/OWASP-Benchmark/BenchmarkJava && git clone https://github.com/OWASP-Benchmark/BenchmarkUtils.git && cd BenchmarkUtils && mvn install
 WORKDIR /owasp/BenchmarkJava
 COPY . .
-RUN mvn clean package cargo:install
 
 RUN useradd -d /home/bench -m -s /bin/bash bench
 RUN echo bench:bench | chpasswd
 
 RUN chown -R bench /owasp/
 ENV PATH /owasp/BenchmarkJava:$PATH
+RUN mvn clean package cargo:install && bash entrypoint2.sh && sleep 10
 CMD bash entrypoint.sh ${IASTIP} ${TOKEN} ${ProjectName}

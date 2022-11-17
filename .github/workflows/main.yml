@@ -22,11 +22,11 @@ jobs:
 
       - name: Build
         run: |
-          cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v9 .
-          cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v9 .
-          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v9 .
-          cd ../iast-jar/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v9 .
-          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v9 .
+          cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v10 .
+          cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v10 .
+          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v10 .
+          cd ../iast-jar/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v10 .
+          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v10 .
       - name: push
         uses: nick-invision/retry@v2
         with:
@@ -34,8 +34,8 @@ jobs:
           max_attempts: 10
 
           command: |
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v9
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v9
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v9
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v9
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v9
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v10
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v10
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v10
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v10
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v10

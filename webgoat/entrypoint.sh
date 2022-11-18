@@ -15,7 +15,11 @@ if [ `ls -s agent.jar |awk '{print $1}'` -lt 10240 ];then
 echo "Please check your address and token ! ! !"
 exit 1
 fi
-nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} -Ddongtai.log.level=debug -Ddongtai.log=true -Ddongtai.app.version=2.1  -jar ../../webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
+nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} -Ddongtai.log.level=debug -Ddongtai.log=true -Ddongtai.app.version=2.1  \
+--add-opens="java.xml/com.sun.xml.internal.stream=ALL-UNNAMED" \
+--add-opens="java.xml/com.sun.org.apache.xerces.internal.utils=ALL-UNNAMED" \
+--add-opens="java.xml/com.sun.org.apache.xerces.internal.impl=ALL-UNNAMED" \
+-jar ../../webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
 echo "项目启动中...，请等待"
 for i in {399..1}
 do

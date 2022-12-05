@@ -238,3 +238,4 @@ curl "$1/WebGoat/challenge/1" -H "Cookie: $COOKIE" --data 'username=usertest&pas
 #curl "$1/WebGoat/challenge/flag" -H "Cookie: $COOKIE" --data 'flag=Admin+password+reset'
 curl "$1/WebGoat/challenge/5" -H "Cookie: $COOKIE" --data 'username_login=Larry&password_login=123456'
 #curl "$1/WebGoat/challenge/flag" -H "Cookie: $COOKIE" --data 'flag=Admin+password+reset'
+curl "$1/WebGoat/JWT/votings" -H "Cookie: ${COOKIE}; access_token=test;"

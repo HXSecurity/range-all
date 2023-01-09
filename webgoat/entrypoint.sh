@@ -19,6 +19,7 @@ nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} -Ddongtai.log
 --add-opens="java.xml/com.sun.xml.internal.stream=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.utils=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.impl=ALL-UNNAMED" \
+--add-opens="sun.net.www.protocol.http=ALL-UNNAMED" \
 -jar ../../webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
 echo "项目启动中...，请等待"
 for i in {399..1}

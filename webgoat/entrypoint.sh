@@ -4,6 +4,12 @@ PORT="8087"
 IASTIP=${1}
 TOKEN=${2}
 ProjectNam=${3}
+if [ ! -n "${4}" ]; then 
+echo "IS NULL"
+dongtai_log=-Ddongtai.log.level=debug
+else 
+echo "NOT NULL" 
+fi 
 tar -xvf openjdk-16_linux-x64_bin.tar.gz
 cd jdk-16/bin
 curl -X GET $IASTIP'/openapi/api/v1/agent/download?url='$IASTIP'/openapi&language=java' -H 'Authorization: Token '$TOKEN -o agent.jar -k
@@ -15,11 +21,12 @@ if [ `ls -s agent.jar |awk '{print $1}'` -lt 10240 ];then
 echo "Please check your address and token ! ! !"
 exit 1
 fi
-nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} -Ddongtai.log.level=debug -Ddongtai.log=true -Ddongtai.app.version=2.1  \
+nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} ${dongtai_log} -Ddongtai.log=true -Ddongtai.app.version=2.1  \
 --add-opens="java.xml/com.sun.xml.internal.stream=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.utils=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.impl=ALL-UNNAMED" \
 --add-opens="java.base/sun.net.www.protocol.http=ALL-UNNAMED" \
+${4} \
 -jar ../../webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
 echo "项目启动中...，请等待"
 for i in {399..1}

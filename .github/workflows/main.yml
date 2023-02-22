@@ -22,11 +22,11 @@ jobs:
 
       - name: Build
         run: |
-          cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v11 .
-          cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v11 .
-          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v11 .
-          cd ../iast-jar/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v11 .
-          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v11 .
+          cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v12 .
+          cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v12 .
+          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v12 .
+          cd ../iast-jar/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v12 .
+          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v12 .
       - name: push
         uses: nick-invision/retry@v2
         with:
@@ -34,8 +34,8 @@ jobs:
           max_attempts: 10
 
           command: |
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v11
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v11
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v11
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v11
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v11
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v12
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v12
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v12
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v12
+            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v12

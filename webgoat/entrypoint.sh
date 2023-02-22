@@ -6,7 +6,7 @@ TOKEN=${2}
 ProjectNam=${3}
 if [ ! -n "${4}" ]; then 
 echo "IS NULL"
-dongtai_log=-Ddongtai.log.level=debug
+dongtai_log="-Ddongtai.log.level=debug"
 else 
 echo "NOT NULL" 
 fi 

@@ -3,17 +3,17 @@
 
 openrasp 8080/vulns/   https://github.com/baidu/openrasp.git
 ```cmd
-docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="openrasp" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v11
+docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="openrasp" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v20
 ```
 
 webgoat 8087/WebGoat/   https://github.com/WebGoat/WebGoat.git
 ```cmd
-docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="webgoat" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v11
+docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="webgoat" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v20
 ```
 
 benchmark 8443/benchmark/   https://github.com/OWASP-Benchmark/BenchmarkJava.git
 ```cmd
-docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="benchmark" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v11
+docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="benchmark" registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v20
 ```
 
 iast-jar 8085/iast6\?name=hello  https://github.com/spring-projects/spring-boot.git

@@ -12,30 +12,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Login to Aliyun Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           registry: ${{ secrets.ALIYUN_REGISTRY }}
           username: ${{ secrets.ALIYUN_DOCKERHUB_USER }}
           password: ${{ secrets.ALIYUN_DOCKERHUB_PASSWORD }}
 
-      - name: Build
-        run: |
-          cd openrasp/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v12 .
-          cd ../webgoat/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v12 .
-          cd ../BenchmarkJava/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v12 .
-          cd ../iast-jar/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v12 .
-          cd ../iast-grpc-java/ && docker build -t  registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v12 .
-      - name: push
-        uses: nick-invision/retry@v2
+      - name: Build and push webgoat
+        uses: docker/build-push-action@v3
         with:
-          timeout_seconds: 600
-          max_attempts: 10
+          file: Dockerfile
+          context: ./webgoat
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v20
 
-          command: |
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v12
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:webgoat-v12
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v12
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-jar-v12
-            docker push registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:iast-grpc-java-v12
+      - name: Build and push openrasp
+        uses: docker/build-push-action@v3
+        with:
+          file: Dockerfile
+          context: ./openrasp
+          platforms: linux/amd64
+          push: true
+          tags: |
+            registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v20
+
+      - name: Build and push openrasp
+        uses: docker/build-push-action@v3
+        with:
+          file: Dockerfile
+          context: ./BenchmarkJava
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:benchmark-v20

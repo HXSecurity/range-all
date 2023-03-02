@@ -10,8 +10,7 @@ dongtai_log="-Ddongtai.log.level=debug"
 else 
 echo "NOT NULL" 
 fi 
-tar -xvf openjdk-16_linux-x64_bin.tar.gz
-cd jdk-16/bin
+
 curl -X GET $IASTIP'/openapi/api/v1/agent/download?url='$IASTIP'/openapi&language=java' -H 'Authorization: Token '$TOKEN -o agent.jar -k
 if [ ! -f "agent.jar" ]; then
 echo "Please check your address and token ! ! !"
@@ -21,14 +20,14 @@ if [ `ls -s agent.jar |awk '{print $1}'` -lt 10240 ];then
 echo "Please check your address and token ! ! !"
 exit 1
 fi
-nohup ./java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} ${dongtai_log} -Ddongtai.log=true -Ddongtai.app.version=2.1  \
+nohup java -javaagent:agent.jar -Ddongtai.app.name=${ProjectNam} ${dongtai_log} -Ddongtai.log=true -Ddongtai.app.version=2.1  \
 --add-opens="java.xml/com.sun.xml.internal.stream=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.utils=ALL-UNNAMED" \
 --add-opens="java.xml/com.sun.org.apache.xerces.internal.impl=ALL-UNNAMED" \
 --add-opens="java.base/sun.net.www=ALL-UNNAMED" \
 --add-opens="java.base/sun.net.www.protocol.http=ALL-UNNAMED" \
 ${4} \
--jar ../../webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
+-jar webgoat-server-8.2.2.jar --server.address=$IP --server.port=$PORT &
 echo "项目启动中...，请等待"
 for i in {399..1}
 do
@@ -42,7 +41,7 @@ else
     echo 靶场正在努力启动中: $i !!!
 fi
 done
-cd ../../
+
 HOST="http://"$IP":"$PORT
 curl -H 'Content-type: application/x-www-form-urlencoded'  -X POST -d 'username=usertest&password=123456&matchingPassword=123456&agree=agree' ${HOST}/WebGoat/register.mvc 
 echo "开始触发靶场流量"

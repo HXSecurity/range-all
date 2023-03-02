@@ -27,7 +27,7 @@ jobs:
       - name: Build and push webgoat
         uses: docker/build-push-action@v3
         with:
-          file: Dockerfile
+          file: ./webgoat/Dockerfile
           context: ./webgoat
           platforms: linux/amd64,linux/arm64
           push: true
@@ -37,7 +37,7 @@ jobs:
       - name: Build and push openrasp
         uses: docker/build-push-action@v3
         with:
-          file: Dockerfile
+          file: ./openrasp/Dockerfile
           context: ./openrasp
           platforms: linux/amd64
           push: true
@@ -47,7 +47,7 @@ jobs:
       - name: Build and push openrasp
         uses: docker/build-push-action@v3
         with:
-          file: Dockerfile
+          file: ./BenchmarkJava/Dockerfile
           context: ./BenchmarkJava
           platforms: linux/amd64,linux/arm64
           push: true

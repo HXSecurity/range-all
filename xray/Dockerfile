@@ -5,4 +5,4 @@ RUN yum -y install *epel* &&  yum -y install libpcap-devel \
   && ALIMARCH=`arch` && curl -L https://charts.dongtai.io/apk/${ALIMARCH}/xray -o /usr/bin/xray \
   && ln -s /usr/lib64/libpcap.so.1.10.0 /usr/lib64/libpcap.so.0.8
 COPY . .
-ENTRYPOINT ./xray_linux_amd64 ${XRAY_SHELL}
+ENTRYPOINT xray ${XRAY_SHELL}

@@ -24,6 +24,16 @@ jobs:
           username: ${{ secrets.ALIYUN_DOCKERHUB_USER }}
           password: ${{ secrets.ALIYUN_DOCKERHUB_PASSWORD }}
 
+      - name: Build and push xray
+        uses: docker/build-push-action@v3
+        with:
+          file: ./xray/Dockerfile
+          context: ./xray
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:xray-v20
+
       - name: Build and push webgoat
         uses: docker/build-push-action@v3
         with:
@@ -44,7 +54,7 @@ jobs:
           tags: |
             registry.cn-hangzhou.aliyuncs.com/tscuite/bachang:openrasp-v20
 
-      - name: Build and push openrasp
+      - name: Build and push BenchmarkJava
         uses: docker/build-push-action@v3
         with:
           file: ./BenchmarkJava/Dockerfile

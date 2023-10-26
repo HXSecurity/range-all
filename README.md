@@ -32,13 +32,35 @@ docker run -it --rm -e IASTIP="http://IP" -e TOKEN="TOKEN" -e ProjectName="iast-
 
 ## IASTIP
 
+洞态的服务器的IP，比如：
+
+```
+-e IASTIP="https://xx-iast-xxx.huoxian.cn/"
+```
+
 ## TOKEN
+
+连接到服务器的Token，可以从“add agent”页面获取：
+
+![image-20230830174556995](README.assets/image-20230830174556995.png)
+
+比如：
+
+```
+-e TOKEN="1f6b147d179xxxxxx83f2f911b55b"
+```
+
+
 
 ## ProjectName
 
-指定项目的版本，比如：
+指定项目的名称，比如：
 
+```
+-e ProjectName="cc-iast-grpc-java"
+```
 
+建议在项目名称加上自己的名字作为前缀以便与其他人区分，因为环境Server环境可能很多人一起用的。
 
 ## OPTIONS
 
